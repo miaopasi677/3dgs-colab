@@ -1,0 +1,8 @@
+# Host / Colab helper deps only. The engine itself pins torch + CUDA extensions
+# in its own install step (see notebook and Dockerfile); do not pin torch here
+# for Colab, where the runtime already ships a CUDA-matched torch.
+plyfile
+tqdm
+joblib
+Pillow
+numpy

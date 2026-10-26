@@ -1,0 +1,18 @@
+services:
+  3dgs:
+    build: .
+    image: 3dgs-colab:latest
+    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    volumes:
+      - ./data:/workspace/data
+      - ./output:/workspace/output
+    working_dir: /workspace
+    stdin_open: true
+    tty: true
