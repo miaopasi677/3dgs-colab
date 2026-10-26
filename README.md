@@ -9,6 +9,15 @@
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/miaopasi677/3dgs-colab/blob/main/notebooks/3dgs_colab.ipynb)
 
+## 0. gsplat 版（当前 Colab 推荐）
+
+官方 2023 引擎在当前 Colab（Python 3.13 / torch 2.11 / CUDA 13）上编不过 `diff-gaussian-rasterization`，三轮修复后仍失败，因此新增 gsplat 版：
+
+- Notebook：`notebooks/3dgs_gsplat.ipynb`，Colab 一键链接：https://colab.research.google.com/github/miaopasi677/3dgs-colab/blob/main/notebooks/3dgs_gsplat.ipynb
+- 训练：直接用 gsplat 官方 `examples/simple_trainer.py`（default 策略，30000 步，全分辨率 `--data_factor 1`），不自己重写训练循环
+- 产物：`results/gsplat_truck/ply/point_cloud_29999.ply`，评估在 7000 / 30000 步输出 PSNR / SSIM / LPIPS
+- 注意：不要装 gsplat 官方 `examples/requirements.txt` 原样，那里面钉了 torch==2.9.1，会降级 Colab 的 torch；gsplat 版 notebook 只装训练依赖，不动 torch
+
 ## 1. Colab 一键跑（推荐先跑这个）
 
 1. 打开上面 Colab 链接，运行时类型选 **GPU**（T4 能跑，A100 / L4 更快）。
